@@ -1,0 +1,16 @@
+.title-container {
+	background-image: url('../assets/slider_background.png');
+	background-size: cover;
+	justify-content: center;
+	align-items: center;
+
+	height: 500px;
+	width: 100%;
+}
+.page-title {
+	font-size: 70px;
+	font-weight: 700;
+}
+.large-margin {
+	margin-top: 120px;
+}

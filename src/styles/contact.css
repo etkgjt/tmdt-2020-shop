@@ -1,0 +1,31 @@
+.title-container {
+	background-image: url('../assets/slider_background.png');
+	justify-content: center;
+	align-items: center;
+	height: 500px;
+}
+.page-title {
+	font-size: 70px;
+	font-weight: 700;
+}
+.background {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 100vh;
+	width: 100vw;
+}
+.top-layer {
+	background: #e3f2fd66;
+	height: 100vh;
+	width: 100vw;
+}
+.contact-form {
+	background-color: white;
+	border-radius: 3px;
+}
+.box-shadow {
+	-webkit-box-shadow: -1px 2px 8px 2px rgba(0, 0, 0, 0.75);
+	-moz-box-shadow: -1px 2px 8px 2px rgba(0, 0, 0, 0.75);
+	box-shadow: -1px 2px 8px 2px rgba(0, 0, 0, 0.75);
+}

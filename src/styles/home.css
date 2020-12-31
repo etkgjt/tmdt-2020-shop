@@ -1,0 +1,327 @@
+.intro-area {
+	margin-top: 100px;
+	padding-left: auto;
+	padding-right: auto;
+	justify-content: center;
+	align-items: center;
+}
+.intro-area-container {
+	background-image: url('https://images.pexels.com/photos/1036841/pexels-photo-1036841.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+	width: 100%;
+	height: 1000px;
+	background-size: cover;
+	background-position: center;
+	justify-content: center;
+	align-items: center;
+	margin-top: 200px;
+	padding-top: 200px;
+}
+.intro-area-shadow {
+	-webkit-box-shadow: 0px 5px 7px -5px rgba(0, 0, 0, 1);
+	-moz-box-shadow: 0px 5px 7px -5px rgba(0, 0, 0, 1);
+	box-shadow: 0px 5px 7px -5px rgba(0, 0, 0, 1);
+}
+.intro-title-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+}
+.hero-img-wrapper {
+}
+h1 {
+	font-size: 5vw;
+	font-weight: 900;
+	margin-bottom: 35px;
+	max-width: 50vw;
+}
+.section-padding {
+	padding-top: 150px;
+	padding-bottom: 120px;
+}
+.section-title-container {
+	margin-bottom: 30px;
+	padding-left: 15px;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+}
+.section-title {
+	font-size: 50px;
+	font-weight: bold;
+}
+.gallery-area {
+	min-height: 720px;
+}
+.gallery-container {
+	display: flex;
+	height: 720px;
+}
+.shadow-1 {
+	border-radius: 5px;
+	-webkit-box-shadow: 0px 0px 8px -1px rgba(0, 0, 0, 0.29);
+	-moz-box-shadow: 0px 0px 8px -1px rgba(0, 0, 0, 0.29);
+	box-shadow: 0px 0px 8px -1px rgba(0, 0, 0, 0.29);
+}
+.gallery1 {
+	background-image: url('https://cdn.tgdd.vn/Products/Images/44/191993/asus-x441ma-ga024t-1-1-org.jpg?fbclid=IwAR0_t5iLaPlpHum2-i4vFsXcODH6FnFZZTTQdCR7auPt5PkxrxKxShJpsg8');
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	min-width: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+.gallery2 {
+	background-image: url('https://cdn.tgdd.vn/Products/Images/42/200533/iphone-11-pro-max-xanh-11-org.jpg?fbclid=IwAR3seTSJgQ8IEenOHU-dRCnHLzsB1QZnjFwB7_j98uz1QDgowofam59lGtk');
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	min-width: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+.gallery3 {
+	background-image: url('https://cdn.tgdd.vn/Products/Images/42/226099/samsung-galaxy-z-fold-2-den-8-org.jpg?fbclid=IwAR04zB163CLpT9Y7_PUWsWbMYIRRjn4ENeAHY9vLeWi-Kw9-hriBw-YzdNw');
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	min-width: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.gallery4 {
+	background-image: url('https://cdn.tgdd.vn/Products/Images/42/217936/samsung-galaxy-s20-plus-xanh-duong-5-org.jpg?fbclid=IwAR3Rps6dXBVo9uH9tjNp0S4lHZjsD7cIgiHDO7bpdXgwk8wbTVGCltVijl0');
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	min-width: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin-top: 20px;
+}
+.popular-section-padding {
+	padding-top: 150px;
+	padding-bottom: 70px;
+}
+.popular-section-title-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	margin-bottom: 50px;
+	font-family: 'Roboto', sans-serif;
+}
+.popular-section-title {
+	max-width: 40vw;
+}
+.popular-section-big-title {
+	font-size: 4vw;
+	font-weight: 700;
+
+	text-align: center;
+}
+.view-more-button {
+	display: flex;
+	width: 300px;
+	height: 70px;
+	background-color: #4285f4;
+	justify-content: center;
+	align-items: center;
+	color: white;
+}
+.view-more-button:hover {
+	display: flex;
+	width: 300px;
+	height: 70px;
+	background-color: #4285f4;
+	justify-content: center;
+	align-items: center;
+	color: white;
+}
+.container-box-shadow-less-blur {
+	border-radius: 5px;
+	-webkit-box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.66);
+	-moz-box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.66);
+	box-shadow: 0px 1px 12px 0px rgba(0, 0, 0, 0.66);
+}
+.video-area {
+	position: relative;
+}
+.video-background {
+	background-image: url('../assets/sectin_bg1.png');
+	height: 720px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.play-button {
+	width: 100px;
+	height: 100px;
+	border-radius: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	border-color: white;
+	color: white;
+}
+.play-button:hover {
+	width: 100px;
+	height: 100px;
+	border-radius: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: white;
+	border-color: white;
+	color: #ff2020;
+}
+.more-info {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background-color: #ff2020;
+	width: 300px;
+	height: 80px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	color: white;
+}
+.watch-area-padding {
+	padding-top: 120px;
+	padding-bottom: 70px;
+}
+.choice-container {
+	height: auto;
+
+	margin-bottom: 150px;
+}
+.choice-watch-img1 {
+	background-image: url('https://cdn.tgdd.vn/Products/Images/54/228486/tai-nghe-chup-tai-beats-studio3-mx422-mx432-1-org.jpg?fbclid=IwAR2mGcriFB8nLj-o_hI4tRfR7ZN677H2G5W-sObUQgUYyhQYxas2vsslbEs');
+	width: 100%;
+	height: 100%;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+.choice-watch-img2 {
+	background-image: url('https://cdn.tgdd.vn/Products/Images/42/222596/oppo-reno4-260720-040737-400x460.png?fbclid=IwAR2gk28uckQxtdhzfjj9EXNwxnMuFDNJbPeqc61N78E6_Q1GkNgMrzrTu9k');
+	width: 100%;
+	height: 100%;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+.choice-title {
+	font-size: 4vw;
+
+	font-weight: 700;
+}
+.gradient-background {
+	/* background: rgb(252, 253, 254);
+	background: linear-gradient(
+		90deg,
+		rgba(252, 253, 254, 1) 0%,
+		rgba(242, 250, 255, 1) 33%,
+		rgba(255, 255, 255, 1) 65%,
+		rgba(230, 239, 241, 1) 100%
+	); */
+	background: #f4fafe;
+}
+.container-box-shadow {
+	/* background-color: #fff; */
+	-webkit-box-shadow: -12px 9px 33px -16px rgba(0, 0, 0, 0.66);
+	-moz-box-shadow: -12px 9px 33px -16px rgba(0, 0, 0, 0.66);
+	box-shadow: -12px 9px 33px -16px rgba(0, 0, 0, 0.66);
+}
+
+/* Animation */
+.hvr-shrink {
+	display: inline-block;
+	vertical-align: middle;
+	-webkit-transform: perspective(1px) translateZ(0) scale(1.1);
+	transform: perspective(1px) translateZ(0) scale(1.1);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.8s;
+	-webkit-transition-property: transform;
+	transition-property: transform;
+}
+.hvr-shrink:hover,
+.hvr-shrink:focus,
+.hvr-shrink:active {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+
+	background-color: red;
+}
+.hvr-grow {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	vertical-align: middle;
+	-webkit-transform: perspective(1px) translateZ(0);
+	transform: perspective(1px) translateZ(0);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.9s;
+	-webkit-transition-property: transform;
+	transition-property: transform;
+}
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+	-webkit-transform: scale(1.05);
+	transform: scale(1.05);
+}
+.hvr-sweep-to-right {
+	display: flex;
+	vertical-align: middle;
+	justify-content: center;
+	align-items: center;
+
+	-webkit-transform: perspective(1px) translateZ(0);
+	transform: perspective(1px) translateZ(0);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+	position: relative;
+	-webkit-transition-property: color;
+	transition-property: color;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+}
+.hvr-sweep-to-right:before {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: #333333;
+	-webkit-transform: scaleX(0);
+	transform: scaleX(0);
+	-webkit-transform-origin: 0 50%;
+	transform-origin: 0 50%;
+	-webkit-transition-property: transform;
+	transition-property: transform;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	-webkit-transition-timing-function: ease-out;
+	transition-timing-function: ease-out;
+}
+.hvr-sweep-to-right:hover,
+.hvr-sweep-to-right:focus,
+.hvr-sweep-to-right:active {
+	color: white;
+}
+.hvr-sweep-to-right:hover:before,
+.hvr-sweep-to-right:focus:before,
+.hvr-sweep-to-right:active:before {
+	-webkit-transform: scaleX(1);
+	transform: scaleX(1);
+}

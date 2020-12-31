@@ -1,0 +1,127 @@
+.nav-link-title:hover {
+	color: #fff;
+	font-weight: 'bold';
+	text-decoration: none;
+}
+.nav-link-title {
+	color: #fff;
+
+	font-weight: normal;
+	font-style: normal;
+	font-size: 16px;
+	border-width: 2px;
+	padding-top: 25px;
+}
+.navbar {
+	width: 100%;
+}
+
+.nav-link {
+	border-width: 2px;
+	border-color: black;
+}
+._icon {
+	font-size: 30px;
+	margin-left: 20px;
+	cursor: pointer;
+}
+._icon:hover {
+	-webkit-transform: scale(1.2);
+}
+
+.icon_wrapper {
+	width: auto;
+	height: 50;
+	justify-content: space-around;
+
+	display: block;
+}
+.main-header {
+	width: 90%;
+
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+}
+.header-area {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	width: 100%;
+	display: block;
+
+	height: 100px;
+	transition: all 300ms ease-in-out;
+}
+.header-container {
+	width: 100%;
+	height: 100px;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	background-color: #fff;
+}
+.toggler-button {
+	color: red;
+}
+.btn:hover {
+	background-color: #bbb;
+}
+.dropdown {
+	width: 100;
+	color: #ff003c;
+}
+.header-gradient-bg {
+	background: #458aff;
+}
+.header-button {
+	border-radius: 0;
+	border-color: white;
+	border-width: 0;
+}
+.header-button:focus {
+	border-width: 2px;
+	border-color: white;
+	background-color: yellow;
+	box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14),
+		0 3px 3px -2px rgba(0, 0, 0, 0.12), 0 1px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.scrolled {
+	/* position: fixed;
+	top: 0;
+	left: 0; */
+	pointer-events: none;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	background-color: #fff;
+	-webkit-box-shadow: 0px 9px 16px 2px rgba(0, 0, 0, 0.19);
+	-moz-box-shadow: 0px 9px 16px 2px rgba(0, 0, 0, 0.19);
+	box-shadow: 0px 9px 16px 2px rgba(0, 0, 0, 0.19);
+	/* transition: 2s;
+	transform: translateY(5%); */
+	opacity: 0;
+}
+
+/*
+Animation
+*/
+.hvr-grow {
+	display: inline-block;
+	vertical-align: middle;
+	-webkit-transform: perspective(1px) translateZ(0);
+	transform: perspective(1px) translateZ(0);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	-webkit-transition-property: transform;
+	transition-property: transform;
+}
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+}
