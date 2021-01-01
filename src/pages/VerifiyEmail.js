@@ -13,10 +13,8 @@ const VeriryEmail = () => {
 	const email = query.get('token');
 
 	useEffect(() => {
-		if (email) {
-			verify();
-		}
-	}, [email]);
+		if (username && password) verify();
+	}, []);
 	const verify = async () => {
 		try {
 			MyModal.show(() => {}, <IndicatorModal title="Verifing..." />);
