@@ -501,11 +501,12 @@ const InvoiceHistory = ({ userId }) => {
 };
 const CouponList = () => {
 	const { coupon, userInfo } = useSelector((state) => state?.userReducer);
+	const { id, token } = useSelector((state) => state.userReducer.userInfo);
 	const [state, setState] = useState(coupon);
 	const dispatch = useDispatch();
 	useEffect(() => {
 		if (!state || !state.length) {
-			dispatch(getAllCoupon(userInfo?.id));
+			dispatch(getAllCoupon(userInfo?.id, token));
 		}
 	}, []);
 	useEffect(() => {

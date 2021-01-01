@@ -125,9 +125,14 @@ export const changePassword = (token, pass, id) =>
 			.then((res) => resolve(res?.data))
 			.catch((err) => reject(err));
 	});
-export const getAllCoupon = (userId) => async (dispatch) => {
+export const getAllCoupon = (userId, token) => async (dispatch) => {
 	try {
-		const { data } = await API.get(`/vouchers/customer/${userId}`);
+		const { data } = await API.get(`/vouchers/customer/${userId}`, {
+			headers: {
+				Authorization: `Bearer ${token}`,
+				'Content-Type': 'application/json',
+			},
+		});
 		console.log('Voucher lay duowc ne', data);
 		dispatch(updateCouponListCreator(data));
 	} catch (err) {

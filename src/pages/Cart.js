@@ -296,6 +296,7 @@ const SumaryCheckout = ({ items }) => {
 	const [isFaded, setIsFaded] = useState(false);
 	const [data, setData] = useState(items ? items : []);
 	const { loggedIn } = useSelector((state) => state.userReducer);
+	const { id, token } = useSelector((state) => state.userReducer.userInfo);
 	const history = useHistory();
 	const ship = 10;
 	const { coupon, userInfo } = useSelector((state) => state?.userReducer);
@@ -303,7 +304,7 @@ const SumaryCheckout = ({ items }) => {
 	const dispatch = useDispatch();
 	useEffect(() => {
 		if (!state || !state.length) {
-			dispatch(getAllCoupon());
+			dispatch(getAllCoupon(id, token));
 		}
 	}, []);
 	useEffect(() => {
