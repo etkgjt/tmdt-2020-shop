@@ -169,7 +169,7 @@ const SignInModal = ({ onSignInSuccess = () => {} }) => {
 		try {
 			MyModal.show(() => {}, <IndicatorModal title="Đang gửi..." />);
 			const sendData = JSON.stringify({ email: recoveryEmail });
-			const res = await sendEmailToRecoveryPassword(sendData);
+			const res = await sendEmailToRecoveryPassword(recoveryEmail);
 			console.log('send success ', res);
 			onSignInSuccess();
 			MyModal.hide(() => {});

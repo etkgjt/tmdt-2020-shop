@@ -1,7 +1,7 @@
 import { Card, Button } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
-import { useLocation, useHistory } from 'react-router-dom';
+import { useLocation, useHistory, useParams } from 'react-router-dom';
 import { Row, Container } from 'reactstrap';
 import { AlertModal, IndicatorModal, MyModal } from '../components';
 import { sendRecoveryPassWord, verifyEmail } from '../redux/actions/userAction';
@@ -16,8 +16,10 @@ function useQuery() {
 }
 const ForgotPassword = () => {
 	const history = useHistory();
-	let query = useQuery();
-	const token = query.get('token');
+	// let query = useQuery();
+	const { token } = useParams();
+	console.log('new token ne', token);
+	//const token = query.get('token');
 	const [state, setState] = useState({
 		password: '',
 		confirm_password: '',
@@ -34,7 +36,7 @@ const ForgotPassword = () => {
 	});
 	const _handleChange = (e) => {
 		e.persist();
-		console.log(e.target.name, e.target.value);
+	console.log(e.target.name, e.target.value);
 		setState({ ...state, [e.target.name]: e.target.value });
 	};
 	const _handleSubmit = async () => {
@@ -46,7 +48,7 @@ const ForgotPassword = () => {
 				token: token,
 			});
 			console.log('send Data', sendData);
-			const res = await sendRecoveryPassWord(sendData);
+			const res = await sendRecoveryPassWord(state.password, token);
 			console.log('', res);
 			MyModal.hide(() => {});
 			MyModal.show(

@@ -136,16 +136,23 @@ export const getAllCoupon = (userId) => async (dispatch) => {
 };
 export const sendEmailToRecoveryPassword = (email) =>
 	new Promise((resolve, reject) => {
-		API.post('/user/send-fp', email)
+		API.get(`/customers/forgotpassword${email}`)
 			.then((res) => resolve(res?.data))
 			.catch((err) => reject(err));
 	});
-export const sendRecoveryPassWord = (pass) =>
-	new Promise((resolve, reject) => {
-		API.post('/user/forget', pass)
+export const sendRecoveryPassWord = (pass, token) => {
+	let formdata = new FormData();
+	formdata.append('newpassword', pass);
+	return new Promise((resolve, reject) => {
+		API.put('/customers/ConfirmForgotPassword', formdata, {
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+		})
 			.then((res) => resolve(res?.data))
 			.catch((err) => reject(err));
 	});
+};
 
 const updateOrderHistoryCreator = (payload) => ({
 	type: REDUX.UPDATE_ORDER_HISTORY,

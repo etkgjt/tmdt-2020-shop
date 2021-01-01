@@ -69,7 +69,10 @@ const AppRoute = () => {
 						<Route path="/finish" component={Finish} />
 						<Route path="/search" component={Search} />
 						<Route path="/verify" component={Verify} />
-						<Route path="/forget_password" component={ForgotPassword} />
+						<Route
+							path="/forget_password/:token"
+							component={ForgotPassword}
+						/>
 					</Switch>
 				</Route>
 				<footer
