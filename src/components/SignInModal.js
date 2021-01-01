@@ -296,43 +296,6 @@ const SignInModal = ({ onSignInSuccess = () => {} }) => {
 								>
 									Đăng nhập
 								</Button>
-
-								<GoogleLogin
-									buttonText="Login"
-									clientId={CLIENT_ID}
-									onSuccess={(res) => {
-										console.log('Success res', res);
-									}}
-									onFailure={(fail) => {
-										console.log('Fail res', fail);
-									}}
-								>
-									{/* <Button
-										// disabled={
-										// 	validateEmail(email) && validatePassword(password)
-										// 		? false
-										// 		: true
-										// }
-										onClick={_handleSignInClick}
-										className="button-container-box-shadow"
-										style={{
-											marginTop: 10,
-											color: 'white',
-											backgroundColor:
-												validateEmail(email) &&
-												validatePassword(password)
-													? '#4285f4'
-													: '#7a7a7a',
-											color: 'white',
-											borderWidth: 0,
-											borderRadius: 25,
-											width: '100%',
-											height: 50,
-										}}
-									>
-										Đăng nhập Google
-									</Button> */}
-								</GoogleLogin>
 							</Col>
 						</Row>
 						<Row className="justify-content-center align-items-center mt-3">

@@ -37,7 +37,7 @@ export const getUserInfo = (username, token) =>
 export const signUp = (userInfo) =>
 	new Promise((resolve, reject) => {
 		axios
-			.post('http://localhost:44377/customers/add', userInfo, {
+			.post('https://localhost:44377/customers/add', userInfo, {
 				headers: {
 					'Content-Type': 'application/json',
 				},
@@ -138,7 +138,7 @@ export const getAllCoupon = (userId) => async (dispatch) => {
 export const sendEmailToRecoveryPassword = (email) =>
 	new Promise((resolve, reject) => {
 		axios
-			.get(`http://localhost:44377/customers/forgotpassword/${email}`)
+			.get(`https://localhost:44377/customers/forgotpassword/${email}`)
 			.then((res) => resolve(res?.data))
 			.catch((err) => reject(err));
 	});
