@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useLocation, useHistory } from 'react-router-dom';
+import { useLocation, useHistory, useParams } from 'react-router-dom';
 import { Row, Container } from 'reactstrap';
 import { AlertModal, IndicatorModal, MyModal } from '../components';
 import { verifyEmail } from '../redux/actions/userAction';
@@ -9,6 +9,7 @@ function useQuery() {
 const VeriryEmail = () => {
 	const history = useHistory();
 	let query = useQuery();
+	const { username, password } = useParams();
 	const email = query.get('token');
 
 	useEffect(() => {
@@ -20,7 +21,7 @@ const VeriryEmail = () => {
 		try {
 			MyModal.show(() => {}, <IndicatorModal title="Verifing..." />);
 			console.log('email', email);
-			const res = await verifyEmail(JSON.stringify({ token: email }));
+			const res = await verifyEmail(username, password);
 			console.log('Verifi email success', res);
 			MyModal.hide(() => {});
 			MyModal.show(() => {},

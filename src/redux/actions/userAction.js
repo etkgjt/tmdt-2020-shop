@@ -58,9 +58,9 @@ export const sendInquiry = (data) =>
 			.catch((err) => reject(err));
 	});
 
-export const verifyEmail = (data) =>
+export const verifyEmail = (username, password) =>
 	new Promise((resolve, reject) => {
-		API.post('/user/verify', data)
+		API.get(`customers/ConfirmMail/${username}/${password}`)
 			.then((res) => resolve(res?.data))
 			.catch((err) => reject(err));
 	});

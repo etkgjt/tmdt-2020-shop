@@ -68,7 +68,10 @@ const AppRoute = () => {
 						<Route path="/accessories" component={Accessories} />
 						<Route path="/finish" component={Finish} />
 						<Route path="/search" component={Search} />
-						<Route path="/verify" component={Verify} />
+						<Route
+							path="/verify/:username/:password"
+							component={Verify}
+						/>
 						<Route
 							path="/forget_password/:token"
 							component={ForgotPassword}
