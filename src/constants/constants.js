@@ -15,7 +15,7 @@ import asus from '../assets/asus.png';
 import lenovo from '../assets/lenovo.png';
 import hp from '../assets/hp.png';
 
-const BASE_URL = 'https://minhlnd.azurewebsites.net'; //API url
+const BASE_URL = 'https://localhost:44377'; //API url
 const CITY = [
 	'Hồ Chí Minh',
 	'Hà Nội',
