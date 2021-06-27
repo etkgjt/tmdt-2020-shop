@@ -67,10 +67,10 @@ const PaymentMethod = () => {
         },
         onApprove: async (data, actions) => {
           const order = await actions.order.capture();
-          console.log("APPROVE ORDER", order);
+          console.log("APPROVE ORDER LOG", order);
         },
         onError: (err) => {
-          console.log("ERROR ORDER", err);
+          console.log("ERROR ORDER LOG", err);
         },
       })
       .render(papalRef.current);
