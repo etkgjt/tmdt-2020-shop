@@ -9474,6 +9474,11 @@ react-form-validator-core@1.0.0:
     prop-types "^15.0.0"
     react-lifecycles-compat "^3.0.2"
 
+react-ga@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/react-ga/-/react-ga-3.3.0.tgz#c91f407198adcb3b49e2bc5c12b3fe460039b3ca"
+  integrity sha512-o8RScHj6Lb8cwy3GMrVH6NJvL+y0zpJvKtc0+wmH7Bt23rszJmnqEQxRbyrqUzk9DTJIHoP42bfO5rswC9SWBQ==
+
 react-google-login@^5.2.1:
   version "5.2.1"
   resolved "https://registry.yarnpkg.com/react-google-login/-/react-google-login-5.2.1.tgz#29e14906269cba6cf7a9dc359baf55ed7b482a00"

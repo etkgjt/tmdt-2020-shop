@@ -38,10 +38,15 @@ import "./styles/appRoute.css";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import MyModal from "./components/MyModal";
 import MessengerCustomerChat from "react-messenger-customer-chat";
-
+import ReactGA from "react-ga";
 const AppRoute = () => {
   let location = useLocation();
   // console.log = () => {};
+
+  React.useEffect(() => {
+    ReactGA.initialize("G-86BTJL2XBC");
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
   return (
     <React.Fragment>
       <Provider store={store}>
