@@ -68,6 +68,7 @@ const PaymentMethod = () => {
         onApprove: async (data, actions) => {
           const order = await actions.order.capture();
           console.log("APPROVE ORDER LOG", order);
+          history.push("/confirmation");
         },
         onError: (err) => {
           console.log("ERROR ORDER LOG", err);
