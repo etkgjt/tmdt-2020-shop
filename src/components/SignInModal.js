@@ -35,6 +35,10 @@ import {
 import { GoogleLogin } from 'react-google-login';
 import { CLIENT_ID } from '../constants/constants';
 
+import firebase from '../firebase.js'
+
+import SignInVerifyModal from './VerifyModal';
+
 function parseJwt(token) {
 	var base64Url = token.split('.')[1];
 	var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -68,6 +72,8 @@ const SignInModal = ({ onSignInSuccess = () => {} }) => {
 	// ]);
 	const [remember, setRemember] = useState(true);
 	const history = useHistory();
+
+
 	const _handleSignInClick = async () => {
 		try {
 			MyModal.show(() => {}, <IndicatorModal title="Sign in..." />);
@@ -187,6 +193,7 @@ const SignInModal = ({ onSignInSuccess = () => {} }) => {
 	};
 	return (
 		<Container className="d-flex justify-content-center align-items-center w-75">
+			<div id="recaptcha"></div>
 			{!isForget ? (
 				<Col lg="5" md="10" sm="10" className="mt-5 z-depth3 bg-white w-50">
 					<Icon
@@ -272,12 +279,15 @@ const SignInModal = ({ onSignInSuccess = () => {} }) => {
 						<Row className="justify-content-around align-items-center">
 							<Col lg="10" md="10">
 								<Button
-									// disabled={
-									// 	validateEmail(email) && validatePassword(password)
-									// 		? false
-									// 		: true
-									// }
+									disabled={
+										validateEmail(email) && validatePassword(password)
+											? false
+											: true
+									}
 									onClick={_handleSignInClick}
+									// onClick={() =>
+									// 	MyModal.show(() => console.log('show ne'), <SignInVerifyModal />)
+									// }
 									className="button-container-box-shadow"
 									style={{
 										marginTop: 10,
