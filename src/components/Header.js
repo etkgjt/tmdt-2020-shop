@@ -28,6 +28,7 @@ import reducers from "../redux/reducer/index";
 import { login } from "../redux/actions/userAction";
 import { MyModal, LoginRequestModal, SignInModal } from "../components";
 
+import { Helmet } from "react-helmet";
 import SearchBar from "./SearchBar";
 const data = [
   {
@@ -117,6 +118,17 @@ const _renderDropDownItems = (data) => (
   </DropdownItem>
 );
 const NavigationBar = ({ setShow }) => {
+  // const [isOpen, setIsOpen] = useState(false);
+  // const [cartBadgeNum, setCartBadgeNum] = useState(0);
+  // const numOfItems = useSelector((state) =>
+  // 	state?.cartReducer?.items?.reduce((x, y) => (x += y?.amount), 0)
+  // );
+  // useEffect(() => {
+  // 	if (numOfItems) setCartBadgeNum(numOfItems);
+  // }, [numOfItems]);
+  // const toggle = () => setIsOpen(!isOpen);
+  // const { loggedIn } = useSelector((state) => state.userReducer);
+  // console.log('loggedIn', loggedIn);
   const [isOpen, setIsOpen] = useState(false);
   const [cartBadgeNum, setCartBadgeNum] = useState(0);
   const data1 = useSelector((state) => state?.cartReducer?.items);

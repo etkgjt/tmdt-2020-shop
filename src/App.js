@@ -8,12 +8,17 @@ import { Route } from "react-router-dom";
 import SingleProduct from "./pages/SingleProduct";
 import Home from "./pages/Home";
 import MessengerCustomerChat from "react-messenger-customer-chat";
+import { HelmetProvider } from "react-helmet-async";
 
 function App() {
   return (
     <Provider store={store}>
-      <Route path="/" component={Home} />
-      <Route path="/single_product" component={SingleProduct} />
+      {/* <Route path="/" component={Home} />
+      <Route path="/single_product" component={SingleProduct} /> */}
+      <HelmetProvider>
+        <Route path="/" component={Home} />
+        <Route path="/single_product" component={SingleProduct} />
+      </HelmetProvider>
     </Provider>
   );
 }
