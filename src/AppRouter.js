@@ -60,6 +60,10 @@ const AppRoute = () => {
             <Switch>
               <Route exact={true} path="/" component={Home} />
               <Route path="/single_product" component={SingleProduct} />
+              <Route path="/smart_phone/:id" component={SingleProduct} />
+              <Route path="/laptop/:id" component={SingleProduct} />
+              <Route path="/tablet/:id" component={SingleProduct} />
+              <Route path="/accessories/:id" component={SingleProduct} />
               <Route path="/cart" component={Cart} />
               <Route path="/contact" component={Contact} />
               <Route path="/category" component={Category} />

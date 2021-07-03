@@ -89,7 +89,12 @@ const ShopItem = ({ addToCart, item, idx, dispatch, favoriteList = [] }) => {
                     category: "Button",
                     action: "User click details",
                   });
-                  history.push("/single_product", item);
+                  history.push(
+                    `/${item?.category?.name
+                      ?.toLowerCase()
+                      ?.replace(" ", "_")}/${item?.id}`,
+                    item
+                  );
                 }}
                 className="button-thin-shadow w-100"
                 style={{
