@@ -64,12 +64,16 @@ const AppRoute = () => {
               <Route path="/sign_up" component={SignUp} />
               <Route path="/user_info" component={UserInfo} />
               <Route path="/smart_phone" component={SmartPhone} />
-              <Route path="/laptop" component={Laptop} />
+              <Route path="/laptop" exact component={Laptop} />
               <Route path="/tablet" component={Tablet} />
               <Route path="/accessories" component={Accessories} />
               <Route path="/finish" component={Finish} />
               <Route path="/search" component={Search} />
               <Route path="/verify/:username/:password" component={Verify} />
+              <Route path="/smart_phone/:id" component={SingleProduct} />
+              <Route path="/laptop/:id" component={SingleProduct} />
+              <Route path="/tablet/:id" component={SingleProduct} />
+              <Route path="/accessories/:id" component={SingleProduct} />
               <Route
                 path="/forget_password/:token"
                 component={ForgotPassword}

@@ -8,9 +8,10 @@ export const useHelmetMeta = (
   return (
     <Helmet>
       <title>{title}</title>
-      <meta name="og:description" content={description} />
-      <meta name="og:title" content={title} />
-      <meta name="og:image" content={image} />
+      {/* <meta property="og:description" content={description} />
+      <meta property="og:title" content={title} />
+      <meta property="og:image" content={image} />
+      <meta property="fb:app_id" content="185042066921121" /> */}
     </Helmet>
   );
 };

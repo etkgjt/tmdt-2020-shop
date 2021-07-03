@@ -86,7 +86,7 @@ const ShopMethod = () => (
   <Container className="justify-content-center">
     <Helmet>
       <title>Home</title>
-      <meta
+      {/* <meta
         name="og:description"
         content="this is web selling technology product"
       />
@@ -94,7 +94,7 @@ const ShopMethod = () => (
       <meta
         name="og:image"
         content="https://www.hydrocarbons-technology.com/wp-content/uploads/sites/9/2020/09/shutterstock_1152185600-1440x1008-1-857x600.jpg"
-      />
+      /> */}
     </Helmet>
     <h4 className="text-center" style={{ fontWeight: "bold", fontSize: 40 }}>
       Dịch vụ của chúng tôi
@@ -289,7 +289,9 @@ const _renderItems = () => {
               </Col>
               <Col className="p-0 w-50 px-2">
                 <Button
-                  onClick={() => history.push("/single_product", item)}
+                  onClick={() =>
+                    history.push("/single_product/?id=" + item.name, item)
+                  }
                   className="button-thin-shadow w-100"
                   style={{
                     borderRadius: 20,
