@@ -35,9 +35,7 @@ import {
 import { GoogleLogin } from 'react-google-login';
 import { CLIENT_ID } from '../constants/constants';
 
-import firebase from '../firebase.js'
-
-import SignInVerifyModal from './VerifyModal';
+import VerifyPhoneNumberModal from './VerifyPhoneNumberModal';
 
 function parseJwt(token) {
 	var base64Url = token.split('.')[1];
@@ -56,6 +54,7 @@ function parseJwt(token) {
 
 const SignInModal = ({ onSignInSuccess = () => {} }) => {
 	const dispatch = useDispatch();
+	const [isTwoFA, setIsTwoFA] = useState(true);
 	const [isForget, setIsForget] = useState(false);
 	const [email, setEmail] = useState(localStorage.getItem('tech_world_acc'));
 	const [password, setPassword] = useState(
@@ -72,7 +71,6 @@ const SignInModal = ({ onSignInSuccess = () => {} }) => {
 	// ]);
 	const [remember, setRemember] = useState(true);
 	const history = useHistory();
-
 
 	const _handleSignInClick = async () => {
 		try {
@@ -126,31 +124,52 @@ const SignInModal = ({ onSignInSuccess = () => {} }) => {
 				'user Info',
 				address,
 				id,
-
 				userName,
 				phone,
 				gender,
 				firstname,
 				lastname
 			);
+			console.log('INFO:',user)
+			if(isTwoFA && user.phone !== null){
+				MyModal.hide();
+				MyModal.show(() => {}, <VerifyPhoneNumberModal token={token} user={user}/>);
+			} else {
+				distpatchLoginToRedux(dispatch);
+				updateUserInfoRedux(dispatch, {
+					address,
+					id,
+					first_name: firstname,
+					last_name: lastname,
+					username: email || userName,
+					phone_number: phone,
+					gender,
+					token,
+				});
+				localStorage.setItem('tech_world_acc', email);
+				localStorage.setItem('tech_world_pass', password);
+				onSignInSuccess();
+				MyModal.hide();
+			}
 			// const favorite = await getFavoriteList(id);
 			// console.log('favorite ne', favorite);
 			// updateReduxFavoriteList(dispatch, favorite);
-			distpatchLoginToRedux(dispatch);
-			updateUserInfoRedux(dispatch, {
-				address,
-				id,
-				first_name: firstname,
-				last_name: lastname,
-				username: email || userName,
-				phone_number: phone,
-				gender,
-				token,
-			});
-			localStorage.setItem('tech_world_acc', email);
-			localStorage.setItem('tech_world_pass', password);
-			onSignInSuccess();
-			MyModal.hide();
+
+			// distpatchLoginToRedux(dispatch);
+			// updateUserInfoRedux(dispatch, {
+			// 	address,
+			// 	id,
+			// 	first_name: firstname,
+			// 	last_name: lastname,
+			// 	username: email || userName,
+			// 	phone_number: '0963462180',//phone,
+			// 	gender,
+			// 	token,
+			// });
+			// localStorage.setItem('tech_world_acc', email);
+			// localStorage.setItem('tech_world_pass', password);
+			// onSignInSuccess();
+			// MyModal.hide();
 		} catch (err) {
 			console.log('long signin err', err);
 			MyModal.hide();
@@ -193,7 +212,7 @@ const SignInModal = ({ onSignInSuccess = () => {} }) => {
 	};
 	return (
 		<Container className="d-flex justify-content-center align-items-center w-75">
-			<div id="recaptcha"></div>
+			{/* <div id="recaptcha"></div> */}
 			{!isForget ? (
 				<Col lg="5" md="10" sm="10" className="mt-5 z-depth3 bg-white w-50">
 					<Icon
@@ -279,11 +298,11 @@ const SignInModal = ({ onSignInSuccess = () => {} }) => {
 						<Row className="justify-content-around align-items-center">
 							<Col lg="10" md="10">
 								<Button
-									disabled={
-										validateEmail(email) && validatePassword(password)
-											? false
-											: true
-									}
+									// disabled={
+									// 	validateEmail(email) && validatePassword(password)
+									// 		? false
+									// 		: true
+									// }
 									onClick={_handleSignInClick}
 									// onClick={() =>
 									// 	MyModal.show(() => console.log('show ne'), <SignInVerifyModal />)
