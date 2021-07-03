@@ -3,6 +3,7 @@ import { API } from '../../untils/api';
 import axios from 'axios';
 import { REDUX } from '../store/type';
 import { reject } from 'lodash';
+import firebase from 'firebase';
 
 export const sendNoti = (noti) =>
 	new Promise((resolve, reject) => {
@@ -17,7 +18,7 @@ export const login = (userName, password) => {
 	return new Promise((resolve, reject) => {
 		console.log(data);
 		API.post('/login/customer', data)
-			.then((res) => resolve(res?.data))
+			.then((res) => {resolve(res?.data); console.log("heheheASD",res?.data)})
 			.catch((err) => {
 				console.log('Error', err);
 				reject(err);
@@ -160,7 +161,6 @@ export const sendRecoveryPassWord = (pass, token) => {
 			.catch((err) => reject(err));
 	});
 };
-
 const updateOrderHistoryCreator = (payload) => ({
 	type: REDUX.UPDATE_ORDER_HISTORY,
 	payload,
