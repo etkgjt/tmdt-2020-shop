@@ -3,7 +3,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 const path = require("path");
 const fs = require("fs");
-const { axios } = require("axios");
+const axios = require("axios");
 //
 const categories = [
   {
@@ -46,9 +46,7 @@ function setMeta(response, name, image, description) {
 
 // function fetchApi()
 async function fetchApi(cate, id) {
-  const str = `https://tgdd.azurewebsites.net/products/${id}`;
   try {
-    const data = await axios.get(str);
     console.log(data);
     return data;
   } catch (error) {
@@ -74,13 +72,17 @@ app.get("/manifest.json", (req, res) => {
 });
 
 // set meta for catefory and id_product
-app.get("/:cate", function (request, response) {
+app.get("/:cate/:id", function (request, response) {
   const cate = request.params.cate;
-  const id = request.query.id || null;
+  const id = request.params.id || null;
   console.log(cate, id);
   if (id) {
-    const product = fetchApi(cate, id);
-    setMeta(response, product.name, product.images[0].url);
+    axios
+      .get("https://tgdd.azurewebsites.net/products/" + id)
+      .then((result) => {
+        console.log(result);
+        setMeta(response, result.data.name, result.data.images[0].url);
+      });
   } else {
     let cateInfor = categories.find(({ id }) => id === cate);
     console.log(cateInfor);
