@@ -37,10 +37,16 @@ import "./styles/footer.css";
 import "./styles/appRoute.css";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import MyModal from "./components/MyModal";
+import MessengerCustomerChat from "react-messenger-customer-chat";
+import ReactGA from "react-ga";
 import { HelmetProvider } from "react-helmet-async";
 const AppRoute = () => {
   let location = useLocation();
   // console.log = () => {};
+  React.useEffect(() => {
+    ReactGA.initialize("G-86BTJL2XBC");
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
   return (
     <React.Fragment>
       <Provider store={store}>
@@ -54,6 +60,10 @@ const AppRoute = () => {
             <Switch>
               <Route exact={true} path="/" component={Home} />
               <Route path="/single_product" component={SingleProduct} />
+              <Route path="/smart_phone/:id" component={SingleProduct} />
+              <Route path="/laptop/:id" component={SingleProduct} />
+              <Route path="/tablet/:id" component={SingleProduct} />
+              <Route path="/accessories/:id" component={SingleProduct} />
               <Route path="/cart" component={Cart} />
               <Route path="/contact" component={Contact} />
               <Route path="/category" component={Category} />
@@ -107,6 +117,7 @@ const AppRoute = () => {
           </footer>
         </HelmetProvider>
       </Provider>
+      <MessengerCustomerChat pageId="101159682236047" appId="657246228332033" />
     </React.Fragment>
   );
 };

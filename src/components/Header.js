@@ -28,6 +28,7 @@ import reducers from "../redux/reducer/index";
 import { login } from "../redux/actions/userAction";
 import { MyModal, LoginRequestModal, SignInModal } from "../components";
 
+import { Helmet } from "react-helmet";
 import SearchBar from "./SearchBar";
 const data = [
   {

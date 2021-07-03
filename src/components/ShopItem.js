@@ -7,9 +7,10 @@ import "../styles/shopPage.css";
 import { useHistory } from "react-router-dom";
 import { getNumberWithDot } from "../untils/numberFormater";
 import { Icon, IconButton } from "@material-ui/core";
+import ReactGA from "react-ga";
+
 const ShopItem = ({ addToCart, item, idx, dispatch, favoriteList = [] }) => {
   const history = useHistory();
-
   return (
     <Col
       className="p-3 mt-1"
@@ -70,21 +71,31 @@ const ShopItem = ({ addToCart, item, idx, dispatch, favoriteList = [] }) => {
                   borderWidth: 0,
                   fontSize: 15,
                 }}
-                onClick={() => addToCart(dispatch, item)}
+                onClick={() => {
+                  ReactGA.event({
+                    category: "Button",
+                    action: "User click add to cart",
+                  });
+                  addToCart(dispatch, item);
+                }}
               >
                 Thêm
               </Button>
             </Col>
             <Col className="p-0 w-50 px-2">
               <Button
-                onClick={() =>
+                onClick={() => {
+                  ReactGA.event({
+                    category: "Button",
+                    action: "User click details",
+                  });
                   history.push(
                     `/${item?.category?.name
                       ?.toLowerCase()
                       ?.replace(" ", "_")}/${item?.id}`,
                     item
-                  )
-                }
+                  );
+                }}
                 className="button-thin-shadow w-100"
                 style={{
                   borderRadius: 20,
