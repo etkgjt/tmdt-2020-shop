@@ -72,10 +72,10 @@ const ShopItem = ({ addToCart, item, idx, dispatch, favoriteList = [] }) => {
                   fontSize: 15,
                 }}
                 onClick={() => {
-                  ReactGA.event({
-                    category: "Button",
-                    action: "User click add to cart",
-                  });
+                  // ReactGA.event({
+                  //   category: "Button",
+                  //   action: "User click add to cart",
+                  // });
                   addToCart(dispatch, item);
                 }}
               >
@@ -85,10 +85,10 @@ const ShopItem = ({ addToCart, item, idx, dispatch, favoriteList = [] }) => {
             <Col className="p-0 w-50 px-2">
               <Button
                 onClick={() => {
-                  ReactGA.event({
-                    category: "Button",
-                    action: "User click details",
-                  });
+                  // ReactGA.event({
+                  //   category: "Button",
+                  //   action: "User click details",
+                  // });
                   history.push(
                     `/${item?.category?.name
                       ?.toLowerCase()

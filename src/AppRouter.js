@@ -38,14 +38,14 @@ import "./styles/appRoute.css";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import MyModal from "./components/MyModal";
 import MessengerCustomerChat from "react-messenger-customer-chat";
-import ReactGA from "react-ga";
+// import ReactGA from "react-ga";
 import { HelmetProvider } from "react-helmet-async";
 const AppRoute = () => {
   let location = useLocation();
   // console.log = () => {};
   React.useEffect(() => {
-    ReactGA.initialize("G-8Z69VMY55M");
-    ReactGA.pageview(window.location.pathname + window.location.search);
+    // ReactGA.initialize("G-8Z69VMY55M");
+    // ReactGA.pageview(window.location.pathname + window.location.search);
   }, []);
   return (
     <React.Fragment>
