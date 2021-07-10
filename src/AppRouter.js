@@ -44,7 +44,7 @@ const AppRoute = () => {
   let location = useLocation();
   // console.log = () => {};
   React.useEffect(() => {
-    ReactGA.initialize("G-86BTJL2XBC");
+    ReactGA.initialize("G-8Z69VMY55M");
     ReactGA.pageview(window.location.pathname + window.location.search);
   }, []);
   return (
