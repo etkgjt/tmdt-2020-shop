@@ -34,6 +34,10 @@ import { addToCart } from "../redux/actions/cartAction";
 import { CircularProgress } from "@material-ui/core";
 import { loadShopDataSync } from "../redux/actions/shopAction";
 import { Helmet } from "react-helmet";
+import Mailchimp from "react-mailchimp-form";
+
+const url =
+  "https://chimpstatic.com/mcjs-connected/js/users/b6482aac2d0e438eea395303b/f78c8016cf2baa64997aaea80.js";
 const data = [
   {
     name: "Thermo Ball Etip Gloves",
@@ -82,137 +86,156 @@ const data = [
     buyingTimes: 80,
   },
 ];
-const ShopMethod = () => (
-  <Container className="justify-content-center">
-    <Helmet>
-      <title>Home</title>
-      {/* <meta
-        name="og:description"
-        content="this is web selling technology product"
-      />
-      <meta name="og:title" content="Long-web-ne" />
-      <meta
-        name="og:image"
-        content="https://www.hydrocarbons-technology.com/wp-content/uploads/sites/9/2020/09/shutterstock_1152185600-1440x1008-1-857x600.jpg"
-      /> */}
-    </Helmet>
-    <h4 className="text-center" style={{ fontWeight: "bold", fontSize: 40 }}>
-      Dịch vụ của chúng tôi
-    </h4>
-    <h4 className="text-center my-4" style={{ fontWeight: "200" }}>
-      Với việc mua hàng tại TechWorld, chúng tôi tin rằng quý khách luôn có
-      những trải nghiệm mua hàng an toàn và tuyệt vời.
-    </h4>
-    <Row className="my-5 py-5">
-      <Col xl="3" lg="6" className="px-3">
-        <Col
-          className="button-hover-depth3 pt-3"
-          style={{
-            backgroundColor: "#00C851",
-            color: "white",
-            height: "400px",
-          }}
-        >
-          <Row className="px-5 mt-2 justify-content-center ">
-            <Icon style={{ fontSize: 70, color: "white" }}>
-              local_shipping_rounded
-            </Icon>
-          </Row>
-          <Row className="px-5 mt-4">
-            <h5>Vận chuyển</h5>
-          </Row>
-          <Row className="px-5 mt-2">
-            <p>
-              Quy mô vận chuyển khắp cả nước, đáp ứng nhu cầu của mọi khác hàng
-              từ mọi vùng miền.
-            </p>
-            <br />
-          </Row>
+const ShopMethod = () => {
+  const [email, setEmail] = React.useState("");
+  return (
+    <Container className="justify-content-center">
+      <Helmet>
+        <title>Home</title>
+        <meta
+          name="og:description"
+          content="this is web selling technology product"
+        />
+        <meta name="og:title" content="Long-web-ne" />
+        <meta
+          name="og:image"
+          content="https://www.hydrocarbons-technology.com/wp-content/uploads/sites/9/2020/09/shutterstock_1152185600-1440x1008-1-857x600.jpg"
+        />
+      </Helmet>
+      <h4 className="text-center" style={{ fontWeight: "bold", fontSize: 40 }}>
+        Dịch vụ của chúng tôi
+      </h4>
+      <h4 className="text-center my-4" style={{ fontWeight: "200" }}>
+        Với việc mua hàng tại TechWorld, chúng tôi tin rằng quý khách luôn có
+        những trải nghiệm mua hàng an toàn và tuyệt vời.
+      </h4>
+      <Row className="my-5 py-5">
+        <Col xl="3" lg="6" className="px-3">
+          <Col
+            className="button-hover-depth3 pt-3"
+            style={{
+              backgroundColor: "#00C851",
+              color: "white",
+              height: "400px",
+            }}
+          >
+            <Row className="px-5 mt-2 justify-content-center ">
+              <Icon style={{ fontSize: 70, color: "white" }}>
+                local_shipping_rounded
+              </Icon>
+            </Row>
+            <Row className="px-5 mt-4">
+              <h5>Vận chuyển</h5>
+            </Row>
+            <Row className="px-5 mt-2">
+              <p>
+                Quy mô vận chuyển khắp cả nước, đáp ứng nhu cầu của mọi khác
+                hàng từ mọi vùng miền.
+              </p>
+              <br />
+            </Row>
+          </Col>
         </Col>
-      </Col>
-      <Col xl="3" lg="6" className="px-3">
-        <Col
-          className="button-hover-depth3 pt-3"
-          style={{
-            backgroundColor: "#ff4444",
-            color: "white",
-            height: "400px",
-          }}
-        >
-          <Row className="px-5 mt-2 justify-content-center">
-            <Icon style={{ fontSize: 70 }}>verified_user</Icon>
-          </Row>
-          <Row className="px-5 mt-4">
-            <h5>Bảo mật</h5>
-          </Row>
-          <Row className="px-5 mt-2">
-            <p>
-              Bảo mật là một trong những phương châm hàng đầu của chúng tôi. Với
-              công nghệ tiên tiến nhất, chúng tôi tin rằng sẽ mang lại cho khách
-              hàng cảm giác an toàn khi mua hàng
-            </p>
-          </Row>
+        <Col xl="3" lg="6" className="px-3">
+          <Col
+            className="button-hover-depth3 pt-3"
+            style={{
+              backgroundColor: "#ff4444",
+              color: "white",
+              height: "400px",
+            }}
+          >
+            <Row className="px-5 mt-2 justify-content-center">
+              <Icon style={{ fontSize: 70 }}>verified_user</Icon>
+            </Row>
+            <Row className="px-5 mt-4">
+              <h5>Bảo mật</h5>
+            </Row>
+            <Row className="px-5 mt-2">
+              <p>
+                Bảo mật là một trong những phương châm hàng đầu của chúng tôi.
+                Với công nghệ tiên tiến nhất, chúng tôi tin rằng sẽ mang lại cho
+                khách hàng cảm giác an toàn khi mua hàng
+              </p>
+            </Row>
+          </Col>
         </Col>
-      </Col>
-      <Col xl="3" lg="6" className="px-3">
-        <Col
-          className="button-hover-depth3 pt-3"
-          style={{
-            color: "white",
-            backgroundColor: "#ffbb33",
-            height: "400px",
-          }}
-        >
-          <Row className="px-5 mt-2 justify-content-center">
-            <Icon style={{ fontSize: 70 }}>headset_mic_rounded</Icon>
-          </Row>
-          <Row className="px-5 mt-4">
-            <h5 style={{ textAlign: "center" }}>Hỗ trợ tận tình</h5>
-          </Row>
-          <Row className="px-5 mt-2">
-            <p style={{ textAlign: "center" }}>
-              Chúng tôi có đội ngũ hỗ trợ tận tình, luôn giải đáp mọi thắc mắc
-              của quý khách
-            </p>
-            <br />
-            <br />
-          </Row>
+        <Col xl="3" lg="6" className="px-3">
+          <Col
+            className="button-hover-depth3 pt-3"
+            style={{
+              color: "white",
+              backgroundColor: "#ffbb33",
+              height: "400px",
+            }}
+          >
+            <Row className="px-5 mt-2 justify-content-center">
+              <Icon style={{ fontSize: 70 }}>headset_mic_rounded</Icon>
+            </Row>
+            <Row className="px-5 mt-4">
+              <h5 style={{ textAlign: "center" }}>Hỗ trợ tận tình</h5>
+            </Row>
+            <Row className="px-5 mt-2">
+              <p style={{ textAlign: "center" }}>
+                Chúng tôi có đội ngũ hỗ trợ tận tình, luôn giải đáp mọi thắc mắc
+                của quý khách
+              </p>
+              <br />
+              <br />
+            </Row>
+          </Col>
         </Col>
-      </Col>
-      <Col xl="3" lg="6" className="px-3">
-        <Col
-          className="button-hover-depth3 pt-3"
-          style={{
-            backgroundColor: "#7E57C3",
-            color: "white",
-            height: "400px",
-          }}
-        >
-          <Row className="px-5 mt-2 justify-content-center">
-            <Icon style={{ fontSize: 70 }}>cached_two_tone</Icon>
-          </Row>
-          <Row className="mt-4 text-center w-100">
-            <h5
-              style={{
-                textAlign: "center",
-                width: "100%",
-              }}
-            >
-              Hoàn trả
-            </h5>
-          </Row>
-          <Row className="px-4 mt-2">
-            <p style={{ textAlign: "center" }}>
-              Mọi sản phẩm sẽ được đổi trả trong vòng 30 ngày kể từ ngày nhận
-              hàng nếu khách hàng không hài lòng hoặc sản phậm không đúng với mô
-              tả.
-            </p>
-          </Row>
+        <Col xl="3" lg="6" className="px-3">
+          <Col
+            className="button-hover-depth3 pt-3"
+            style={{
+              backgroundColor: "#7E57C3",
+              color: "white",
+              height: "400px",
+            }}
+          >
+            <Row className="px-5 mt-2 justify-content-center">
+              <Icon style={{ fontSize: 70 }}>cached_two_tone</Icon>
+            </Row>
+            <Row className="mt-4 text-center w-100">
+              <h5
+                style={{
+                  textAlign: "center",
+                  width: "100%",
+                }}
+              >
+                Hoàn trả
+              </h5>
+            </Row>
+            <Row className="px-4 mt-2">
+              <p style={{ textAlign: "center" }}>
+                Mọi sản phẩm sẽ được đổi trả trong vòng 30 ngày kể từ ngày nhận
+                hàng nếu khách hàng không hài lòng hoặc sản phậm không đúng với
+                mô tả.
+              </p>
+            </Row>
+          </Col>
         </Col>
-      </Col>
-    </Row>
-  </Container>
-);
+      </Row>
+      <Row>
+        <Col className="d-flex flex-row justify-content-center align-items-center p-0 m-0">
+          <Mailchimp
+            action="https://herokuapp.us6.list-manage.com/subscribe/post?u=b6482aac2d0e438eea395303b&id=73e0da4aaf"
+            fields={[
+              {
+                name: "EMAIL",
+                placeholder: "Email",
+                type: "email",
+                required: true,
+              },
+            ]}
+            className="form-mail"
+          />
+        </Col>
+      </Row>
+    </Container>
+  );
+};
 const MyRating = ({ value }) => {
   return (
     <Rating size="large" name="size-large" precision={0.5} value={value} />

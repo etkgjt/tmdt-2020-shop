@@ -7,7 +7,7 @@ import "../styles/shopPage.css";
 import { useHistory } from "react-router-dom";
 import { getNumberWithDot } from "../untils/numberFormater";
 import { Icon, IconButton } from "@material-ui/core";
-import ReactGA from "react-ga";
+// import ReactGA from "react-ga";
 
 const ShopItem = ({ addToCart, item, idx, dispatch, favoriteList = [] }) => {
   const history = useHistory();
