@@ -103,7 +103,11 @@ const ProductImage = ({ data }) => {
           display: "flex",
         }}
       >
-        <img className="item-image w-100 " src={data?.[activeImgIndex]?.url} />
+        <img
+          alt="image"
+          className="item-image w-100 "
+          src={data?.[activeImgIndex]?.url}
+        />
       </Row>
       <Row className="p-0 m-0 mt-2">
         {data.map((v, i) => (
@@ -115,6 +119,7 @@ const ProductImage = ({ data }) => {
             onClick={() => setActiveImgIndex(i)}
           >
             <img
+              alt="image"
               key={`${i}`}
               className="z-depth1 h-100 img-fluid"
               src={v?.url}
@@ -141,8 +146,14 @@ const ProductDetails = ({ productInfo, setInfo }) => {
     comments,
     id,
   } = productInfo;
-  const { products, laptop, smartPhone, tablet, accessories, favorite } =
-    useSelector((state) => state.shopReducer);
+  const {
+    products,
+    laptop,
+    smartPhone,
+    tablet,
+    accessories,
+    favorite,
+  } = useSelector((state) => state.shopReducer);
   const { loggedIn, userInfo } = useSelector((state) => state.userReducer);
 
   const dispatch = useDispatch();

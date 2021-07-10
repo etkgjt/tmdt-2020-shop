@@ -67,6 +67,7 @@ export default function FullWidthTabs() {
           <Row className="my-5" />
           <Row className="my-5">
             <img
+              alt="image"
               src="https://plus24h.com/upload/images/t%E1%BA%A3i%20xu%E1%BB%91ng%20(1).png"
               style={{ width: 300, height: 300 }}
             />
@@ -139,10 +140,9 @@ const UserInfoTable = ({ data }) => {
     password: "",
     confirm_password: "",
   });
-  useEffect(
-    () => setState({ ...data, password: "", confirm_password: "" }),
-    [data]
-  );
+  useEffect(() => setState({ ...data, password: "", confirm_password: "" }), [
+    data,
+  ]);
   useEffect(() => {
     ValidatorForm.addValidationRule("isPasswordMatch", (value) => {
       // console.log('value ne', value, 'state ne', state);

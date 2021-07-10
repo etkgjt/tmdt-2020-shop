@@ -149,6 +149,7 @@ const NavigationBar = ({ setShow }) => {
     <Navbar expand="md" light>
       <NavLink exact to="/">
         <img
+          alt="image"
           src={mainLogo}
           className="img-fluid"
           style={{ height: 80, width: 120 }}

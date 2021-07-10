@@ -271,7 +271,7 @@ const _renderItems = () => {
             className="mb-50 text-center single_items pt-5"
             style={{ maxHeight: "400px" }}
           >
-            <img src={item.images?.[0]?.url}></img>
+            <img alt="image" src={item.images?.[0]?.url}></img>
           </div>
           <Col
             style={{ borderRadius: 5 }}
@@ -395,6 +395,7 @@ const NewArrival = () => (
           }}
         >
           <img
+            alt="image"
             src={
               "https://cdn.tgdd.vn/Products/Images/42/153856/iphone-11-do-1-1-org.jpg"
             }
@@ -414,6 +415,7 @@ const NewArrival = () => (
           }}
         >
           <img
+            alt="image"
             src={`https://cdn.tgdd.vn/Products/Images/44/220174/apple-macbook-air-2020-i3-1-5-org.jpg?fbclid=IwAR04zB163CLpT9Y7_PUWsWbMYIRRjn4ENeAHY9vLeWi-Kw9-hriBw-YzdNw`}
             className="hvr-grow"
           />
@@ -429,6 +431,7 @@ const NewArrival = () => (
           }}
         >
           <img
+            alt="image"
             src={`https://cdn.tgdd.vn/Products/Images/522/221776/ipad-pro-12-9-inch-wifi-cellular-128gb-2020-bac-1020x680-org.jpg?fbclid=IwAR30peiMHCqSXHGRxQKQaonrYZfvvzvkHBb_XRt7Jbvw6JirE56PGrV_b_s`}
             className="hvr-grow"
           />

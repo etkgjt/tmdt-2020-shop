@@ -98,7 +98,7 @@ const SmartPhone = memo(
                       key={i}
                       className="m-2 p-2 d-flex flex-column border bg-white justify-content-center align-items-center"
                     >
-                      <img src={v} />
+                      <img alt="image" src={v} />
                     </Col>
                   ))}
                 </Row>

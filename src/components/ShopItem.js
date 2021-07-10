@@ -32,7 +32,7 @@ const ShopItem = ({ addToCart, item, idx, dispatch, favoriteList = [] }) => {
           className="mb-50 text-center single_items pt-5"
           style={{ maxHeight: "400px" }}
         >
-          <img src={item.images?.[0]?.url}></img>
+          <img alt="image" src={item.images?.[0]?.url}></img>
         </div>
         <Col
           style={{ borderRadius: 5 }}

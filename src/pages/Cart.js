@@ -117,7 +117,7 @@ const ItemDetails = ({ product }) => {
     <Col>
       <Row className="mb-4 pt-4">
         <Col md="5" lg="3" xl="3">
-          <img className="img-fluid w-100" src={images?.[0]?.url} />
+          <img alt="image" className="img-fluid w-100" src={images?.[0]?.url} />
         </Col>
         <Col md="7" lg="9" xl="9">
           <div className="mb-0 pl-1">
