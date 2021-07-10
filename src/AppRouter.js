@@ -113,7 +113,20 @@ const AppRoute = () => {
           </footer>
         </HelmetProvider>
       </Provider>
-      <MessengerCustomerChat pageId="101159682236047" appId="657246228332033" />
+      <div
+        style={{
+          position: "fixed",
+          bottom: 100,
+          right: 20,
+          width: 100,
+          height: 100,
+        }}
+      >
+        <MessengerCustomerChat
+          pageId="101159682236047"
+          appId="657246228332033"
+        />
+      </div>
     </React.Fragment>
   );
 };
