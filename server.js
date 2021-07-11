@@ -30,37 +30,42 @@ const categories = [
       "https://image.made-in-china.com/2f0j00vtfYuaPlvBqO/Professional-Mobile-Phone-Accessories-Factory-for-Samsung-for-iPhone-Mobile-Phone.jpg",
   },
 ];
+//convert description
+function convertDescription(description = {}) {
+  return Object.keys(description).reduce(
+    (stringDes, key) =>
+      (stringDes +=
+        key !== "id" && key !== "productId"
+          ? `${key}: ${description[key]} `
+          : ""),
+    ""
+  );
+}
+
 //fucntion set meta
-function setMeta(response, name, image, description) {
+function setMeta(response, url, name, image = "", description) {
+  let newDescription = `this is ${name} page`;
+  if (description) newDescription = convertDescription(description);
   const filePath = path.resolve(__dirname, "./build", "index.html");
   fs.readFile(filePath, "utf8", function (err, data) {
     if (err) {
       return console.log(err);
     }
-    data = data.replace(/\$OG_TITLE/g, name);
-    data = data.replace(/\$OG_DESCRIPTION/g, name + " page description");
+    data = data.replace(/\$OG_URL/g, "https://shop-cnweb.herokuapp.com" + url);
+    data = data.replace(/\$OG_TITLE/g, name + " page");
+    data = data.replace(/\$OG_DESCRIPTION/g, newDescription);
     result = data.replace(/\$OG_IMAGE/g, image);
     response.send(result);
   });
 }
 
-// function fetchApi()
-async function fetchApi(cate, id) {
-  try {
-    console.log(data);
-    return data;
-  } catch (error) {
-    console.log("error", error);
-  }
-}
-
 //set meta for home
 app.get("/", function (request, response) {
-  console.log("Home page visited!");
   setMeta(
     response,
+    "/",
     "home",
-    "https://shop-cnweb.herokuapp.com/static/media/newLogo6.d9ad15ec.png"
+    "https://www9.lunapic.com/do-not-link-here-use-hosting-instead/162597670243019950?9737121116"
   );
 });
 
@@ -71,24 +76,40 @@ app.get("/manifest.json", (req, res) => {
   return "your manifest";
 });
 
-// set meta for catefory and id_product
-app.get("/:cate/:id", function (request, response) {
+//get cate
+app.get("/:cate", function (request, response) {
   const cate = request.params.cate;
-  const id = request.params.id || null;
-  console.log(cate, id);
-  if (id) {
-    axios
-      .get("https://tgdd.azurewebsites.net/products/" + id)
-      .then((result) => {
-        console.log(result);
-        setMeta(response, result.data.name, result.data.images[0].url);
-      });
-  } else {
+  if (cate) {
     let cateInfor = categories.find(({ id }) => id === cate);
-    console.log(cateInfor);
-    if (categories !== undefined) {
-      setMeta(response, cateInfor.name, cateInfor.image);
+    if (cateInfor) {
+      setMeta(response, "/" + cate, cateInfor.name, cateInfor.image);
+    } else {
+      setMeta(
+        response,
+        "/" + cate,
+        cate,
+        "https://shop-cnweb.herokuapp.com/static/media/newLogo6.d9ad15ec.png"
+      );
     }
+  }
+});
+
+// set meta for catefory and id_product
+app.get("/:cate/:name", function (request, response) {
+  const cate = request.params.cate;
+  const name = request.params.name || null;
+  if (name) {
+    axios
+      .get("https://tgdd.azurewebsites.net/products/" + name.split("_").pop())
+      .then((result) => {
+        setMeta(
+          response,
+          `/${cate}/${name}`,
+          result.data.name,
+          result.data.images[0]?.url,
+          result.data.descriptions[0]
+        );
+      });
   }
 });
 app.use(express.static(path.resolve(__dirname, "./build")));

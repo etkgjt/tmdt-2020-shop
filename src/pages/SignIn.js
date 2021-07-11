@@ -35,8 +35,7 @@ const SignIn = () => {
     }
   };
   const validateEmail = (email) => {
-    const regex =
-      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return regex.test(email);
   };
   const validatePassword = (pass) => {
@@ -48,7 +47,7 @@ const SignIn = () => {
   };
   return (
     <Container className="py-5">
-      {useHelmetMeta("this is sign in", "sign in")}
+      {useHelmetMeta("sign in page")}
       <Container
         fluid
         className="d-flex flex-column justify-content-center align-items-center mb-5"

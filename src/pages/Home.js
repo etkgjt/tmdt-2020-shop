@@ -91,16 +91,7 @@ const ShopMethod = () => {
   return (
     <Container className="justify-content-center">
       <Helmet>
-        <title>Home</title>
-        <meta
-          name="og:description"
-          content="this is web selling technology product"
-        />
-        <meta name="og:title" content="Long-web-ne" />
-        <meta
-          name="og:image"
-          content="https://www.hydrocarbons-technology.com/wp-content/uploads/sites/9/2020/09/shutterstock_1152185600-1440x1008-1-857x600.jpg"
-        />
+        <title>Home CN_WEBSHOP</title>
       </Helmet>
       <h4 className="text-center" style={{ fontWeight: "bold", fontSize: 40 }}>
         Dịch vụ của chúng tôi

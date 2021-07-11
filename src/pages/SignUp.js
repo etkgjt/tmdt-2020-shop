@@ -96,7 +96,7 @@ const SignUp = () => {
   };
   return (
     <Container className="py-5 w-50">
-      {useHelmetMeta("this is sign up", "sign up")}
+      {useHelmetMeta("sign up page")}
       <Container className="w-75">
         <Row className="my-5" />
         <p>{test}</p>

@@ -10110,6 +10110,14 @@ react-scroll@1.7.16:
     lodash.throttle "^4.1.1"
     prop-types "^15.5.8"
 
+react-share@^4.4.0:
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/react-share/-/react-share-4.4.0.tgz#cabbf2111d7a907a888ab4d89d08410329efd5ee"
+  integrity sha512-POe8Ge/JT9Ew9iyW7CiYsCCWCb8uMJWqFl9S7W0fJ/oH5gBJNzukH0bL5vSr17KKG5h15d3GfKaoviI22BKeYA==
+  dependencies:
+    classnames "^2.2.5"
+    jsonp "^0.2.1"
+
 react-side-effect@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/react-side-effect/-/react-side-effect-2.1.1.tgz#66c5701c3e7560ab4822a4ee2742dee215d72eb3"
