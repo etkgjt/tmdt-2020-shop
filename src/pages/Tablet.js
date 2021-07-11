@@ -59,7 +59,7 @@ const Tablet = memo(
     return (
       <Container fluid className="gradient-background p-0">
         {/* <CustomCarousel /> */}
-        {useHelmetMeta("this is tablet", "tablet")}
+        {useHelmetMeta("tablet page")}
         <TopAdCarousel />
         <section className="shop-container">
           <Container fluid className="w-75">

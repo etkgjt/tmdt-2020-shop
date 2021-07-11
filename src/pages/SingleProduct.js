@@ -22,6 +22,7 @@ import {
   IndicatorModal,
   AlertModal,
 } from "../components";
+import { FacebookShareButton, FacebookIcon } from "react-share";
 
 import "../styles/singleProduct.css";
 import "../styles/material.css";
@@ -45,6 +46,7 @@ const SingleProduct = memo(() => {
   console.log("product render ne");
   let { state } = useLocation();
   console.log("state ne", state);
+
   const [itemInfo, setItemInfo] = useState(
     state
       ? state
@@ -66,6 +68,7 @@ const SingleProduct = memo(() => {
           ],
         }
   );
+
   useEffect(() => {
     console.log("state ne", state, itemInfo);
     setItemInfo(state);
@@ -73,11 +76,7 @@ const SingleProduct = memo(() => {
   console.log("state ne", state);
   return (
     <Container fluid className="gradient-background mb-5">
-      {useHelmetMeta(
-        `this is ${itemInfo.name}`,
-        itemInfo.name,
-        itemInfo.images[0].url
-      )}
+      {useHelmetMeta(itemInfo.name)}
       <Row className="title-container mt-5">
         <p className="page-title">Chi tiết sản phẩm</p>
       </Row>
@@ -194,6 +193,8 @@ const ProductDetails = ({ productInfo, setInfo }) => {
       }
     }
   };
+  const url = window.location.href;
+  console.log(url);
   const makeNewCommentFunc = (cmt) => {
     if (!loggedIn) {
       MyModal.show(() => {}, <SignInModal />);
@@ -508,6 +509,12 @@ const ProductDetails = ({ productInfo, setInfo }) => {
               Yêu thích
             </p>
           </Button>
+          <FacebookShareButton url={url} className="share-button">
+            <span>
+              <FacebookIcon size="35" round />
+              share
+            </span>
+          </FacebookShareButton>
         </Row>
       </Col>
 

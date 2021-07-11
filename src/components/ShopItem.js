@@ -92,7 +92,9 @@ const ShopItem = ({ addToCart, item, idx, dispatch, favoriteList = [] }) => {
                   history.push(
                     `/${item?.category?.name
                       ?.toLowerCase()
-                      ?.replace(" ", "_")}/${item?.id}`,
+                      ?.replace(" ", "_")}/${item?.name
+                      .replace(/ /g, "_")
+                      .concat("_", item.id)}`,
                     item
                   );
                 }}

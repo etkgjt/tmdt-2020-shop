@@ -48,7 +48,7 @@ const Cart = () => {
   console.log("cart render ne");
   return (
     <Container fluid className="pb-5" style={{ backgroundColor: "#e3f2fd66" }}>
-      {useHelmetMeta("this is cart", "cart")}
+      {useHelmetMeta("cart page")}
       <Row className="title-container mt-5">
         <p class="page-title">Chi tiết giỏ hàng</p>
       </Row>
