@@ -26,7 +26,7 @@ import { FacebookShareButton, FacebookIcon } from "react-share";
 
 import "../styles/singleProduct.css";
 import "../styles/material.css";
-import { useLocation, useHistory } from "react-router-dom";
+import { useLocation, useHistory, useParams } from "react-router-dom";
 import { addToCart } from "../redux/actions/cartAction";
 import { useDispatch, useSelector } from "react-redux";
 import { getNumberWithDot } from "../untils/numberFormater";
@@ -41,9 +41,15 @@ import {
 } from "../redux/actions/shopAction";
 import socket from "../untils/socket";
 import { useHelmetMeta } from "../untils/useHelmet";
+import { API } from "../untils/api";
 
 const SingleProduct = memo(() => {
   console.log("product render ne");
+  const params = useParams();
+  console.log("PARAMS", params);
+
+  let id = `${params?.id}`.split("_").pop();
+
   let { state } = useLocation();
   console.log("state ne", state);
 
@@ -70,9 +76,22 @@ const SingleProduct = memo(() => {
   );
 
   useEffect(() => {
-    console.log("state ne", state, itemInfo);
-    setItemInfo(state);
+    // console.log("state ne", state, itemInfo);
+    // // setItemInfo(state);
+    getProductInfo(id);
   }, [state]);
+  const getProductInfo = async (productId) => {
+    try {
+      const res = await API.get(`/products/${productId}`);
+      setItemInfo({
+        ...res.data,
+        description: res?.data?.descriptions?.[0] || {},
+      });
+    } catch (err) {
+      console.log("GET PRODUCT ERROR", err);
+    }
+  };
+
   console.log("state ne", state);
   return (
     <Container fluid className="gradient-background mb-5">
