@@ -79,75 +79,75 @@ const Confirmation = memo(() => {
     };
   };
 
-  const randomId = Date.now();
+  const randomId = Date.now().toString();
 
   const _onCheckoutPress = async () => {
-    const requestObject = {
-      accessKey: ACCESS_KEY,
-      partnerCode: PARTNER_CODE,
-      notifyUrl: "https://momo.vn",
-      returnUrl: "http://localhost:3000/finish",
-      orderId: randomId,
-      amount: 1000,
-      orderInfo: "LONG NGUYEN",
-      requestId: "M" + randomId + "M",
-      extraData: "email=abc@gmail.com",
-      redirectUrl: "http://localhost:3000/finish",
-      requestType: "captureWallet",
-      lang: "vi",
-    };
     let decrypStr =
       "partnerCode=" +
-      PARTNER_CODE +
+      "MOMOJLJ120210715" +
       "&accessKey=" +
-      requestObject.accessKey +
+      "7Bnrs3yGlDjHyB6U" +
       "&requestId=" +
-      requestObject.requestId +
+      randomId +
       "&amount=" +
-      requestObject.amount +
+      "1000" +
       "&orderId=" +
-      requestObject.orderId +
+      randomId +
       "&orderInfo=" +
-      requestObject.orderInfo +
+      "LONG NGUYEN" +
       "&returnUrl=" +
-      requestObject.returnUrl +
+      "https://shop-cnweb.herokuapp.com/finish" +
       "&notifyUrl=" +
-      requestObject.notifyUrl +
+      "https://momo.vn" +
       "&extraData=" +
-      requestObject.extraData;
-
+      "email=abc@gmail.com";
     let signature = HMACSHA256(decrypStr, SECRET_KEY).toString();
-
-    const res = await Axios.post(MOMO_ENDPOINT, {
-      ...requestObject,
-      signature,
+    let data = JSON.stringify({
+      accessKey: "7Bnrs3yGlDjHyB6U",
+      partnerCode: "MOMOJLJ120210715",
+      requestType: "captureMoMoWallet",
+      notifyUrl: "https://momo.vn",
+      returnUrl: "https://shop-cnweb.herokuapp.com/finish",
+      orderId: randomId,
+      amount: "1000",
+      orderInfo: "LONG NGUYEN",
+      requestId: randomId,
+      extraData: "email=abc@gmail.com",
+      signature: signature,
     });
+    const res = await Axios({
+      method: "post",
+      url: "https://test-payment.momo.vn/gw_payment/transactionProcessor",
+      data: data,
+    });
+    // const res = await api.post("", JSON.stringify(data));
     console.log("RESSS", res);
+    window.location.replace(res.data.payUrl);
 
     // try {
-    // 	MyModal.show(() => {}, <IndicatorModal title="Order sending..." />);
-    // 	const orderInfo = JSON.stringify(formatPlaceOrderData());
-    // 	console.log(orderInfo);
-    // 	const res = await sendOrder(token, orderInfo);
-    // 	console.log('order success', res);
-    // 	// MyModal.show(() => {}, <AlertModal title="Order Successfully !" />);
-    // 	if (voucher && voucher.discountPercent) {
-    // 		dispatch(usingCoupon(id, voucher.code, coupon, token));
-    // 	}
-    // 	const noti = {
-    // 		Type: 2,
-    // 		Email: `${first_name} ${last_name}`,
-    // 		Date: moment().format('YYYY-MM-DD HH:mm:SS'),
-    // 	};
-    // 	socket.emit('new-order');
-    // 	const res1 = await sendNoti(JSON.stringify(noti));
-    // 	console.log('send notie', res1);
-    // 	MyModal.hide();
-    // 	clearCart(dispatch);
-    // 	history.push('/finish');
+    //   MyModal.show(() => {}, <IndicatorModal title="Order sending..." />);
+    //   const orderInfo = JSON.stringify(formatPlaceOrderData());
+    //   console.log(orderInfo);
+    //   const res = await sendOrder(token, orderInfo);
+    //   console.log("order success", res);
+    //   // MyModal.show(() => {}, <AlertModal title="Order Successfully !" />);
+    //   if (voucher && voucher.discountPercent) {
+    //     dispatch(usingCoupon(id, voucher.code, coupon, token));
+    //   }
+    //   const noti = {
+    //     Type: 2,
+    //     Email: `${first_name} ${last_name}`,
+    //     Date: moment().format("YYYY-MM-DD HH:mm:SS"),
+    //   };
+    //   socket.emit("new-order");
+    //   const res1 = await sendNoti(JSON.stringify(noti));
+    //   console.log("send notie", res1);
+    //   MyModal.hide();
+    //   clearCart(dispatch);
+    //   history.push("/finish");
     // } catch (err) {
-    // 	MyModal.hide();
-    // 	console.log('Place Order Err', err);
+    //   MyModal.hide();
+    //   console.log("Place Order Err", err);
     // }
   };
 
