@@ -16,6 +16,13 @@ import lenovo from "../assets/lenovo.png";
 import hp from "../assets/hp.png";
 
 const BASE_URL = "https://tgdd.azurewebsites.net"; //API url
+
+export const MOMO_ENDPOINT =
+  "https://test-payment.momo.vn/gw_payment/transactionProcessor";
+export const PARTNER_CODE = "MOMOJLJ120210715";
+export const ACCESS_KEY = "7Bnrs3yGlDjHyB6U";
+export const SECRET_KEY = "Y26GNfuweePBwdKk0gIKkVhrd9AN1b9y";
+
 const CITY = [
   "Hồ Chí Minh",
   "Hà Nội",
