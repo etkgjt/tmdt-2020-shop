@@ -1,71 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-      crossorigin="anonymous"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&display=swap"
+    rel="stylesheet" />
 
-    <meta property="og:title" content="$OG_TITLE" />
-    <meta property="og:description" content="$OG_DESCRIPTION" />
-    <meta property="og:image" content="$OG_IMAGE" />
-    <meta
-      property="og:url"
-      content="http://euro-travel-example.com/index.htm"
-    />
-    <meta property="description" content="$OG_DESCRIPTION" />
-    <meta property="og:title" content="$OG_TITLE" />
-    <meta property="og:description" content="$OG_DESCRIPTION" />
-    <meta property="og:image" content="$OG_IMAGE" />
-    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
-    <script src="https://code.jquery.com/jquery-3.0.0.js"></script>
-    <script src="https://code.jquery.com/jquery-migrate-3.3.1.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
-    <script id="mcjs">
-      !(function (c, h, i, m, p) {
-        (m = c.createElement(h)),
-          (p = c.getElementsByTagName(h)[0]),
-          (m.async = 1),
-          (m.src = i),
-          p.parentNode.insertBefore(m, p);
-      })(
-        document,
-        "script",
-        "https://chimpstatic.com/mcjs-connected/js/users/b6482aac2d0e438eea395303b/03cf32057fbd39b8eb91b5f01.js"
-      );
-    </script>
+  <meta property="og:title" content="$OG_TITLE" />
+  <meta property="og:description" content="$OG_DESCRIPTION" />
+  <meta property="og:image" content="$OG_IMAGE" />
+  <meta property="og:url" content="http://euro-travel-example.com/index.htm" />
+  <meta property="description" content="$OG_DESCRIPTION" />
+  <meta property="og:title" content="$OG_TITLE" />
+  <meta property="og:description" content="$OG_DESCRIPTION" />
+  <meta property="og:image" content="$OG_IMAGE" />
+  <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+  <script src="https://code.jquery.com/jquery-3.0.0.js"></script>
+  <script src="https://code.jquery.com/jquery-migrate-3.3.1.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
+  <script id="mcjs">
+    !(function (c, h, i, m, p) {
+      (m = c.createElement(h)),
+        (p = c.getElementsByTagName(h)[0]),
+        (m.async = 1),
+        (m.src = i),
+        p.parentNode.insertBefore(m, p);
+    })(
+      document,
+      "script",
+      "https://chimpstatic.com/mcjs-connected/js/users/b6482aac2d0e438eea395303b/03cf32057fbd39b8eb91b5f01.js"
+    );
+  </script>
 
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -75,48 +59,56 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-8Z69VMY55M"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8Z69VMY55M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
 
-      gtag("config", "G-8Z69VMY55M");
-    </script>
+    gtag("config", "G-8Z69VMY55M");
+  </script>
 
-    <style>
-      body {
-        font-family: "Roboto", sans-serif;
-        font-size: 48px;
-      }
-    </style>
-  </head>
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-ND7ST6R');</script>
+  <!-- End Google Tag Manager -->
 
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--Start of Tawk.to Script-->
-    <script type="text/javascript">
-      var Tawk_API = Tawk_API || {},
-        Tawk_LoadStart = new Date();
-      (function () {
-        var s1 = document.createElement("script"),
-          s0 = document.getElementsByTagName("script")[0];
-        s1.async = true;
-        s1.src = "https://embed.tawk.to/60dd936d7f4b000ac03a8089/1f9gofp3k";
-        s1.charset = "UTF-8";
-        s1.setAttribute("crossorigin", "*");
-        s0.parentNode.insertBefore(s1, s0);
-      })();
-    </script>
-    <!--End of Tawk.to Script-->
-    <script>
+  <style>
+    body {
+      font-family: "Roboto", sans-serif;
+      font-size: 48px;
+    }
+  </style>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <!--Start of Tawk.to Script-->
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {},
+      Tawk_LoadStart = new Date();
+    (function () {
+      var s1 = document.createElement("script"),
+        s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = "https://embed.tawk.to/60dd936d7f4b000ac03a8089/1f9gofp3k";
+      s1.charset = "UTF-8";
+      s1.setAttribute("crossorigin", "*");
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  </script>
+  <!--End of Tawk.to Script-->
+  <script>
       // let oldOffset = 0;
 
       // $(window).scroll(function () {
@@ -135,9 +127,9 @@
       // 		$('.header-area').removeClass('scrolled');
       // 	}
       // });
-    </script>
+  </script>
 
-    <!--
+  <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
 
@@ -147,5 +139,11 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  </body>
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-ND7ST6R" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+</body>
+
 </html>
