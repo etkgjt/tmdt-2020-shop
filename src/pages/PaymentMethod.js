@@ -46,6 +46,37 @@ const PaymentMethod = () => {
 
     setExpireDate("");
   }, [method]);
+
+  const papalRef = useRef();
+  useEffect(() => {
+    window.paypal
+      .Buttons({
+        createOrder: (data, actions, err) => {
+          return actions.order.create({
+            intent: "CAPTURE",
+            purchase_units: [
+              {
+                description: "Dien Thoai",
+                amount: {
+                  currency_code: "USD",
+                  value: 15.0,
+                },
+              },
+            ],
+          });
+        },
+        onApprove: async (data, actions) => {
+          const order = await actions.order.capture();
+          console.log("APPROVE ORDER LOG", order);
+          history.push("/confirmation");
+        },
+        onError: (err) => {
+          console.log("ERROR ORDER LOG", err);
+        },
+      })
+      .render(papalRef.current);
+  }, []);
+
   return (
     <Container fluid className="pb-5" style={{ backgroundColor: "#F9F9FF" }}>
       <Row className="title-container mt-5">
