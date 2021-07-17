@@ -107,7 +107,7 @@ const Confirmation = memo(() => {
       "&orderInfo=" +
       "LONG NGUYEN" +
       "&returnUrl=" +
-      "http://localhost:3000/confirmation" +
+      "https://shop-cnweb.herokuapp.com/finish" +
       "&notifyUrl=" +
       "https://momo.vn" +
       "&extraData=" +
@@ -124,7 +124,7 @@ const Confirmation = memo(() => {
       partnerCode: "MOMOJLJ120210715",
       requestType: "captureMoMoWallet",
       notifyUrl: "https://momo.vn",
-      returnUrl: "http://localhost:3000/confirmation",
+      returnUrl: "https://shop-cnweb.herokuapp.com/finish",
       orderId: randomId,
       amount: "1000",
       orderInfo: "LONG NGUYEN",
