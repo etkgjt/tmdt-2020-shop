@@ -27,6 +27,8 @@ import visa from "../assets/visa.svg";
 import mastercard from "../assets/mastercard.svg";
 import paypal from "../assets/paypal.svg";
 import pay from "../assets/pay.svg";
+import momo from "../assets/momo.png";
+
 import { updatePaymentMethod } from "../redux/actions/cartAction";
 import moment from "moment";
 const PaymentMethod = () => {
@@ -38,7 +40,7 @@ const PaymentMethod = () => {
   const [cvv, setCVV] = useState("");
 
   const [expireDate, setExpireDate] = useState("20/2/2020");
-  const [method, setMethod] = useState("credit");
+  const [method, setMethod] = useState("paypal");
   useEffect(() => {
     setCardName("");
     setCardNumber("");
@@ -48,34 +50,6 @@ const PaymentMethod = () => {
   }, [method]);
 
   const papalRef = useRef();
-  useEffect(() => {
-    window.paypal
-      .Buttons({
-        createOrder: (data, actions, err) => {
-          return actions.order.create({
-            intent: "CAPTURE",
-            purchase_units: [
-              {
-                description: "Dien Thoai",
-                amount: {
-                  currency_code: "USD",
-                  value: 15.0,
-                },
-              },
-            ],
-          });
-        },
-        onApprove: async (data, actions) => {
-          const order = await actions.order.capture();
-          console.log("APPROVE ORDER LOG", order);
-          history.push("/confirmation");
-        },
-        onError: (err) => {
-          console.log("ERROR ORDER LOG", err);
-        },
-      })
-      .render(papalRef.current);
-  }, []);
 
   return (
     <Container fluid className="pb-5" style={{ backgroundColor: "#F9F9FF" }}>
@@ -85,35 +59,7 @@ const PaymentMethod = () => {
       <MyStepper activeStep={2} />
       <Container className="mt-5" style={{ backgroundColor: "#F9F9FF" }}>
         <Row>
-          <Col lg="4" md="3" sm="6" className="pt-2">
-            <Row>
-              <img
-                alt="image"
-                src={visa}
-                style={{ width: "40%", maxHeight: 100 }}
-              />
-              <img
-                alt="image"
-                src={mastercard}
-                style={{ width: "40%", maxHeight: 100 }}
-              />
-            </Row>
-            <Row className="justify-content-center mt-1">
-              <Button
-                onClick={() => setMethod("credit")}
-                style={{
-                  width: 26,
-                  height: 26,
-                  borderRadius: 13,
-                  backgroundColor: method === "credit" ? "#458AFF" : "white",
-                  borderWidth: method === "credit" ? 0 : 1,
-                  marginRight: 5,
-                }}
-              />
-              <p>Thanh toán với Credit Card</p>
-            </Row>
-          </Col>
-          <Col lg="4" md="3" sm="6" className="pt-2">
+          <Col lg="6" md="6" sm="6" className="pt-2">
             <img
               alt="image"
               src={paypal}
@@ -134,72 +80,30 @@ const PaymentMethod = () => {
               <p>Thanh toán với Paypal</p>
             </Row>
           </Col>
-          <Col lg="4" md="3" sm="6" className="pt-2">
+          <Col lg="6" md="6" sm="6" className="pt-2">
             <img
               alt="image"
-              src={pay}
-              style={{ width: "40%", maxHeight: 100 }}
+              src={momo}
+              style={{ width: "auto", height: 100 }}
             />
             <Row className="justify-content-center mt-1">
               <Button
-                onClick={() => setMethod("delivery")}
+                onClick={() => setMethod("momo")}
                 style={{
                   width: 26,
                   height: 26,
                   borderRadius: 13,
-                  backgroundColor: method === "delivery" ? "#458AFF" : "white",
-                  borderWidth: method === "delivery" ? 0 : 1,
+                  backgroundColor: method === "momo" ? "#458AFF" : "white",
+                  borderWidth: method === "momo" ? 0 : 1,
                   marginRight: 5,
                 }}
               />
-              <p>Thanh toán khi nhận hàng</p>
+              <p>Thanh toán bằng MOMO</p>
             </Row>
           </Col>
         </Row>
       </Container>
       <Container>
-        {method !== "delivery" ? (
-          <Container fluid className="p-0">
-            <Row className="d-flex justify-content-around align-items-center mt-5">
-              <TextField
-                label="Tên chủ thẻ"
-                className="w-100"
-                variant="outlined"
-                onChange={(e) => setCardName(e?.target?.value)}
-              />
-            </Row>
-            <Row className="pl-0 justify-content-between align-items-center justify-content-center mt-3">
-              <Col md="6" className="m-0 p-0 pr-5">
-                <TextField
-                  label="Số thẻ"
-                  className="w-100"
-                  variant="outlined"
-                  onChange={(e) => setCardNumber(e?.target?.value)}
-                />
-              </Col>
-              <Col md="6" className="p-0">
-                <TextField
-                  label="CVV"
-                  className="w-100"
-                  variant="outlined"
-                  onChange={(e) => setCVV(e?.target?.value)}
-                />
-              </Col>
-            </Row>
-            <Row className="d-flex justify-content-around align-items-center mt-1">
-              <TextField
-                onChange={(e) => setExpireDate(e?.target?.value)}
-                label="Ngày hết hạn"
-                className="w-100"
-                variant="outlined"
-                type="date"
-                defaultValue={moment().format("YYYY-MM-DD")}
-              />
-            </Row>
-          </Container>
-        ) : (
-          <div />
-        )}
         <Row className="justify-content-center w-100">
           <Button
             onClick={() => history.goBack()}
@@ -218,6 +122,7 @@ const PaymentMethod = () => {
             Trở về
           </Button>
           <Button
+            disabled={!method}
             onClick={() => {
               updatePaymentMethod(dispatch, {
                 method,
@@ -228,10 +133,6 @@ const PaymentMethod = () => {
               });
               history.push("/confirmation");
             }}
-            disabled={
-              method !== "delivery" &&
-              (!cardName || !cardNumber || !cvv || !expireDate)
-            }
             className="button-container-box-shadow w-25 "
             style={{
               marginTop: 10,

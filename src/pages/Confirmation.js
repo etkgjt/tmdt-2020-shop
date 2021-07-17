@@ -1,5 +1,5 @@
 import React, { useCallback, memo, useState } from "react";
-import { NavLink, useHistory, Link } from "react-router-dom";
+import { NavLink, useHistory, Link, useParams } from "react-router-dom";
 import { Button, Container, Row } from "reactstrap";
 import Header from "../components/Header";
 import TitleBackground from "../assets/slider_background.png";
@@ -15,7 +15,7 @@ import { getNumberWithDot } from "../untils/numberFormater";
 import { clearCart, sendOrder } from "../redux/actions/cartAction";
 import { Alert } from "reactstrap/lib/Alert";
 import MyModal from "../components/MyModal";
-import socket from "../untils/socket";
+// import socket from "../untils/socket";
 import {
   sendNoti,
   useCoupon as usingCoupon,
@@ -31,7 +31,11 @@ import {
 } from "../constants/constants";
 import Axios from "axios";
 
+import queryString from "query-string";
+
 const Confirmation = memo(() => {
+  const params = useParams();
+
   const [isOpen, setIsOpen] = useState(false);
   const { payment, shippingInfo, items } = useSelector(
     (state) => state.cartReducer
@@ -53,8 +57,14 @@ const Confirmation = memo(() => {
     note,
     voucher,
   } = shippingInfo;
+
+  const papalRef = React.useRef();
+
   console.log("voucher ne", voucher);
   console.log("load ne", payment, shippingInfo, items);
+  let param = queryString.parse(history.location.search);
+
+  console.log("PRAMS", param);
   const toggle = () => setIsOpen(!isOpen);
   const formatPlaceOrderData = () => {
     const cartDetails = [...items]?.map((v) => ({
@@ -76,12 +86,13 @@ const Confirmation = memo(() => {
       PaymentMethod: payment.method,
       Discount:
         voucher && voucher.discountPercent ? voucher.discountPercent : 0,
+      PaymentInfo: "AHAHHAHA",
     };
   };
 
   const randomId = Date.now().toString();
 
-  const _onCheckoutPress = async () => {
+  const paymentMomo = async () => {
     let decrypStr =
       "partnerCode=" +
       "MOMOJLJ120210715" +
@@ -96,18 +107,24 @@ const Confirmation = memo(() => {
       "&orderInfo=" +
       "LONG NGUYEN" +
       "&returnUrl=" +
-      "https://shop-cnweb.herokuapp.com/finish" +
+      "http://localhost:3000/confirmation" +
       "&notifyUrl=" +
       "https://momo.vn" +
       "&extraData=" +
       "email=abc@gmail.com";
+
+    let saveStr = JSON.stringify(formatPlaceOrderData());
+    localStorage.setItem("ORDER", saveStr);
+    localStorage.setItem("ORDER_ID", randomId);
+    localStorage.setItem("TOKEN", token);
+
     let signature = HMACSHA256(decrypStr, SECRET_KEY).toString();
     let data = JSON.stringify({
       accessKey: "7Bnrs3yGlDjHyB6U",
       partnerCode: "MOMOJLJ120210715",
       requestType: "captureMoMoWallet",
       notifyUrl: "https://momo.vn",
-      returnUrl: "https://shop-cnweb.herokuapp.com/finish",
+      returnUrl: "http://localhost:3000/confirmation",
       orderId: randomId,
       amount: "1000",
       orderInfo: "LONG NGUYEN",
@@ -121,35 +138,103 @@ const Confirmation = memo(() => {
       data: data,
     });
     // const res = await api.post("", JSON.stringify(data));
-    console.log("RESSS", res);
-    window.location.replace(res.data.payUrl);
 
-    // try {
-    //   MyModal.show(() => {}, <IndicatorModal title="Order sending..." />);
-    //   const orderInfo = JSON.stringify(formatPlaceOrderData());
-    //   console.log(orderInfo);
-    //   const res = await sendOrder(token, orderInfo);
-    //   console.log("order success", res);
-    //   // MyModal.show(() => {}, <AlertModal title="Order Successfully !" />);
-    //   if (voucher && voucher.discountPercent) {
-    //     dispatch(usingCoupon(id, voucher.code, coupon, token));
-    //   }
-    //   const noti = {
-    //     Type: 2,
-    //     Email: `${first_name} ${last_name}`,
-    //     Date: moment().format("YYYY-MM-DD HH:mm:SS"),
-    //   };
-    //   socket.emit("new-order");
-    //   const res1 = await sendNoti(JSON.stringify(noti));
-    //   console.log("send notie", res1);
-    //   MyModal.hide();
-    //   clearCart(dispatch);
-    //   history.push("/finish");
-    // } catch (err) {
-    //   MyModal.hide();
-    //   console.log("Place Order Err", err);
-    // }
+    window.location.replace(res.data.payUrl);
   };
+  const paypalPayment = async () => {};
+
+  const _onCheckoutPress = async () => {
+    if (payment.method === "paypal") {
+      paypalPayment();
+      return;
+    }
+    paymentMomo();
+  };
+
+  const saveOrder = async (data) => {
+    try {
+      MyModal.show(() => {}, <IndicatorModal title="Order sending..." />);
+      const orderInfo = JSON.stringify({
+        ...formatPlaceOrderData(),
+        PaymentInfo: JSON.stringify(data),
+      });
+      console.log(orderInfo);
+      const res = await sendOrder(token, orderInfo);
+      console.log("order success", res);
+      // MyModal.show(() => {}, <AlertModal title="Order Successfully !" />);
+      if (voucher && voucher.discountPercent) {
+        dispatch(usingCoupon(id, voucher.code, coupon, token));
+      }
+
+      MyModal.hide();
+      localStorage.setItem("ORDER", "");
+      localStorage.setItem("ORDER_ID", "");
+      clearCart(dispatch);
+      history.push("/finish");
+    } catch (err) {
+      MyModal.hide();
+      console.log("Place Order Err", err);
+    }
+  };
+  const sendMomoOrder = async (data) => {
+    try {
+      MyModal.show(() => {}, <IndicatorModal title="Order sending..." />);
+      const ORDER = await JSON.parse(data);
+      ORDER.PaymentInfo = JSON.stringify(param);
+      console.log("ORDER", ORDER);
+      const orderInfo = JSON.stringify(ORDER);
+      const savedToken = localStorage.getItem("TOKEN");
+      const res = await sendOrder(savedToken, orderInfo);
+      if (voucher && voucher.discountPercent) {
+        dispatch(usingCoupon(id, voucher.code, coupon, token));
+      }
+      localStorage.setItem("ORDER", "");
+      localStorage.setItem("ORDER_ID", "");
+      MyModal.hide();
+      clearCart(dispatch);
+      history.push("/finish");
+    } catch (err) {
+      MyModal.hide();
+      console.log("Place Order Err", err);
+    }
+  };
+  React.useEffect(() => {
+    if (payment.method === "paypal") {
+      window.paypal
+        .Buttons({
+          createOrder: (data, actions, err) => {
+            return actions.order.create({
+              intent: "CAPTURE",
+              purchase_units: [
+                {
+                  description: "Dien Thoai",
+                  amount: {
+                    currency_code: "USD",
+                    value: 15.0,
+                  },
+                },
+              ],
+            });
+          },
+          onApprove: async (data, actions) => {
+            const order = await actions.order.capture();
+            saveOrder(order);
+          },
+          onError: (err) => {
+            console.log("ERROR ORDER LOG", err);
+          },
+        })
+        .render(papalRef.current);
+    }
+  }, []);
+  React.useEffect(() => {
+    if (
+      Object.keys(param).length > 4 &&
+      param.orderId === localStorage.getItem("ORDER_ID")
+    ) {
+      sendMomoOrder(localStorage.getItem("ORDER"));
+    }
+  }, []);
 
   return (
     <Container fluid style={{ backgroundColor: "#F4FAFE" }} className="pb-5">
@@ -328,7 +413,7 @@ const Confirmation = memo(() => {
             </Col>
           </Row>
         </Container>
-        <Row className="w-100 justify-content-center">
+        <Row className="w-100 justify-content-center p-5">
           <Button
             onClick={() => history.goBack()}
             className="button-container-box-shadow mt-5 w-25 mr-4"
@@ -345,22 +430,26 @@ const Confirmation = memo(() => {
           >
             Trở về
           </Button>
-          <Button
-            onClick={_onCheckoutPress}
-            className="button-container-box-shadow mt-5 w-25"
-            style={{
-              marginTop: 10,
-              color: "white",
-              backgroundColor: "#4285f4",
-              color: "white",
-              borderWidth: 0,
-              borderRadius: 25,
-              width: "100%",
-              height: 50,
-            }}
-          >
-            Đặt hàng
-          </Button>
+          {payment.method === "paypal" ? (
+            <div ref={papalRef} />
+          ) : (
+            <Button
+              onClick={_onCheckoutPress}
+              className="button-container-box-shadow mt-5 w-25"
+              style={{
+                marginTop: 10,
+                color: "white",
+                backgroundColor: "#4285f4",
+                color: "white",
+                borderWidth: 0,
+                borderRadius: 25,
+                width: "100%",
+                height: 50,
+              }}
+            >
+              Thanh toán
+            </Button>
+          )}
         </Row>
       </Container>
     </Container>
