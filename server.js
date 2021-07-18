@@ -123,7 +123,7 @@ app.get("/:cate/:name", function (request, response) {
 });
 app.use(express.static(path.resolve(__dirname, "./build")));
 
-app.get("/*", function (request, response) {
+app.get("*", function (request, response) {
   const filePath = path.resolve(__dirname, "./build", "index.html");
   response.sendFile(filePath);
 });
