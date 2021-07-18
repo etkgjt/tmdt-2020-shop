@@ -433,8 +433,25 @@ const InvoiceHistory = ({ userId }) => {
     }
   }, []);
   useEffect(() => {
-    if (history && history.length) setState(history);
+    if (history && history.length) {
+      let newArray = history.map((v) => {
+        if (!v.paymentInfo) {
+          return {
+            ...v,
+            paymentInfo: {},
+          };
+        }
+        let obj = JSON.parse(v.paymentInfo);
+
+        return {
+          ...v,
+          paymentInfo: obj,
+        };
+      });
+      setState(newArray);
+    }
   }, [history]);
+
   return (
     <Container fluid className="p-0">
       <Card
@@ -448,6 +465,8 @@ const InvoiceHistory = ({ userId }) => {
               <TableCell>Ngày mua</TableCell>
               <TableCell>Thành tiền</TableCell>
               <TableCell>Trạng thái</TableCell>
+              <TableCell>Hình thức thanh toán</TableCell>
+              <TableCell>Mã thanh toán</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -480,6 +499,10 @@ const InvoiceHistory = ({ userId }) => {
                     >
                       {v?.status?.value}
                     </div>
+                  </TableCell>
+                  <TableCell>{`${v.paymentMethod}`.toUpperCase()}</TableCell>
+                  <TableCell>
+                    {v?.paymentInfo?.orderId || v?.paymentInfo?.id}
                   </TableCell>
                 </TableRow>
               ))

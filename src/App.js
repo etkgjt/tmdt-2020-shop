@@ -9,7 +9,8 @@ import SingleProduct from "./pages/SingleProduct";
 import Home from "./pages/Home";
 import MessengerCustomerChat from "react-messenger-customer-chat";
 import { HelmetProvider } from "react-helmet-async";
-
+console.log = () => {};
+console.warn = () => {};
 function App() {
   return (
     <Provider store={store}>
